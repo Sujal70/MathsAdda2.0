@@ -1,0 +1,577 @@
+<!-- ===== ANNOUNCEMENT BANNER ===== -->
+<div class="announcement-bar" *ngIf="showAnnouncement">
+  <div class="container announcement-container">
+    <div class="announcement-content">
+      <i class="fas fa-bullhorn"></i>
+      <span>{{ announcement.text }}</span>
+      <a *ngIf="announcement.link" [href]="announcement.link" class="announcement-cta">{{ announcement.linkText }}</a>
+    </div>
+    <button class="announcement-close" (click)="showAnnouncement = false">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" [class.scrolled]="isScrolled" [class.has-announcement]="showAnnouncement" [class.menu-open]="mobileMenuOpen">
+  <div class="container nav-container">
+    <a routerLink="/" class="logo">
+      <img src="assets/maths_adda_logo.jpg" alt="Maths Adda" class="logo-img">
+      <span class="logo-name">Maths<span class="logo-name-accent">Adda</span></span>
+    </a>
+
+    <ul class="nav-links" [class.active]="mobileMenuOpen">
+      <li><a href="#home" (click)="closeMobileMenu()">Home</a></li>
+      <li><a href="#about" (click)="closeMobileMenu()">About</a></li>
+      <li><a href="#subjects" (click)="closeMobileMenu()">Subjects</a></li>
+      <li><a href="#youtube" (click)="closeMobileMenu()">YouTube</a></li>
+      <li><a href="#testimonials" (click)="closeMobileMenu()">Results</a></li>
+      <li><a href="#ratings" (click)="closeMobileMenu()">Ratings</a></li>
+      <li><a href="#contact" (click)="closeMobileMenu()">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary btn-sm">Enroll Now</a>
+      <button class="mobile-toggle" (click)="toggleMobileMenu()">
+        <i [class]="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="home">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-star"></i> Trusted by 5000+ Students & Parents
+      </div>
+      <h1 class="hero-title">
+        Learn Smarter,<br>
+        Score <span class="highlight">Higher</span>
+      </h1>
+      <p class="hero-typing">
+        {{ typewriterText }}<span class="cursor">|</span>
+      </p>
+      <p class="hero-description">
+        Expert coaching for Class 9th & 10th with personalized attention,
+        interactive lessons, and proven results. Join our learning community today!
+      </p>
+      <div class="hero-buttons">
+        <a href="#subjects" class="btn btn-accent btn-lg">
+          <i class="fas fa-book-open"></i> Explore Courses
+        </a>
+        <a href="https://www.youtube.com/@MathswithGurpreetSir" target="_blank" class="btn btn-outline-light btn-lg">
+          <i class="fab fa-youtube"></i> Watch Free Lessons
+        </a>
+      </div>
+      <div class="hero-stats-mini">
+        <div class="mini-stat">
+          <div class="mini-stat-avatars">
+            <span class="avatar-circle" style="background: #f97316;">S</span>
+            <span class="avatar-circle" style="background: #0d9488;">A</span>
+            <span class="avatar-circle" style="background: #6366f1;">R</span>
+            <span class="avatar-circle" style="background: #ec4899;">P</span>
+          </div>
+          <span class="mini-stat-text">Join <strong>5000+</strong> happy students</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-wrapper">
+        <img src="assets/gurpreet_sir.jpg" alt="Gurpreet Sir - Maths Adda" class="hero-img">
+        <div class="floating-card card-1">
+          <i class="fas fa-play-circle"></i>
+          <div>
+            <strong>100+</strong>
+            <span>Video Lessons</span>
+          </div>
+        </div>
+        <div class="floating-card card-2">
+          <i class="fas fa-trophy"></i>
+          <div>
+            <strong>95%+</strong>
+            <span>Pass Rate</span>
+          </div>
+        </div>
+        <div class="floating-card card-3">
+          <i class="fab fa-youtube"></i>
+          <div>
+            <strong>2K+</strong>
+            <span>Subscribers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,80 1440,70 L1440,120 L0,120 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== STATS SECTION ===== -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let stat of stats">
+        <div class="stat-icon" [style.background]="stat.bg">
+          <i [class]="stat.icon"></i>
+        </div>
+        <div class="stat-info">
+          <h3 class="stat-number">{{ stat.value }}</h3>
+          <p class="stat-label">{{ stat.label }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="about-section section-padding" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <div class="about-img-wrapper">
+          <img src="assets/gurpreet_sir.jpg" alt="Teacher" class="about-img">
+          <div class="experience-badge">
+            <span class="exp-number">10+</span>
+            <span class="exp-text">Years Experience</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-tag">About Me</div>
+        <h2 class="section-title">Gurpreet Sir</h2>
+        <h3 class="about-subtitle">Passionate Educator, Dedicated Mentor</h3>
+        <br>
+        <p class="about-text">
+          With over 10 years of teaching experience, I specialize in making complex
+          concepts simple and enjoyable for Class 9th and 10th students. My teaching
+          approach combines traditional methods with modern digital tools to ensure
+          every student understands and excels.
+        </p>
+        <p class="about-text">
+          Through my YouTube channel, I've reached lakhs of students across India,
+          providing free quality education accessible to everyone. My mission is to
+          help every student achieve their academic goals with confidence.
+        </p>
+        <div class="about-features">
+          <div class="feature-item" *ngFor="let feature of aboutFeatures">
+            <div class="feature-icon">
+              <i [class]="feature.icon"></i>
+            </div>
+            <div>
+              <strong>{{ feature.title }}</strong>
+              <p>{{ feature.desc }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SUBJECTS SECTION ===== -->
+<section class="subjects-section section-padding" id="subjects">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">What I Teach</div>
+      <h2 class="section-title">Subjects & Courses</h2>
+      <p class="section-subtitle">Comprehensive coaching for Class 9th & 10th with structured curriculum and regular assessments</p>
+    </div>
+
+    <div class="class-tabs">
+      <button class="tab-btn" [class.active]="activeTab === '9'" (click)="activeTab = '9'">
+        <i class="fas fa-book"></i> Class 9th
+      </button>
+      <button class="tab-btn" [class.active]="activeTab === '10'" (click)="activeTab = '10'">
+        <i class="fas fa-book-reader"></i> Class 10th
+      </button>
+    </div>
+
+    <div class="subjects-grid">
+      <div class="subject-card" *ngFor="let subject of getSubjects()" [style.--card-color]="subject.color">
+        <div class="subject-icon-wrap">
+          <img [src]="subject.image" [alt]="subject.name" class="subject-icon-img">
+        </div>
+        <h3 class="subject-name">{{ subject.name }}</h3>
+        <p class="subject-desc">{{ subject.description }}</p>
+        <ul class="subject-topics">
+          <li *ngFor="let topic of subject.topics">
+            <i class="fas fa-check-circle"></i> {{ topic }}
+          </li>
+        </ul>
+        <div class="subject-footer">
+          <span class="subject-duration"><i class="fas fa-clock"></i> {{ subject.duration }}</span>
+          <a [href]="subject.formLink" target="_blank" class="btn btn-sm btn-subject">Join Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== YOUTUBE SECTION ===== -->
+<section class="youtube-section section-padding" id="youtube">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Free Learning</div>
+      <h2 class="section-title">Learn on YouTube</h2>
+      <p class="section-subtitle">Free video lessons, tips, and tricks to help you master every subject</p>
+    </div>
+
+    <div class="youtube-highlight">
+      <div class="yt-channel-card">
+        <div class="yt-channel-info">
+          <div class="yt-avatar">
+            <img src="assets/maths_adda_logo.jpg" alt="Channel" class="yt-avatar-img">
+          </div>
+          <div>
+            <h3>MATHS ADDA</h3>
+            <p>&#64;maths.adda_bygurpreetsir</p>
+          </div>
+        </div>
+        <a href="https://www.youtube.com/@MathswithGurpreetSir" target="_blank" class="btn btn-youtube">
+          <i class="fab fa-youtube"></i> Subscribe Now
+        </a>
+      </div>
+    </div>
+
+    <div class="youtube-grid">
+      <div class="yt-card" *ngFor="let video of videos">
+        <a [href]="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="yt-thumbnail">
+          <img [src]="'https://img.youtube.com/vi/' + video.videoId + '/mqdefault.jpg'" [alt]="video.title" class="yt-thumb-img">
+          <div class="yt-play-btn">
+            <i class="fab fa-youtube"></i>
+          </div>
+        </a>
+        <div class="yt-info">
+          <h4>{{ video.title }}</h4>
+          <p>{{ video.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS / RESULTS ===== -->
+<section class="testimonials-section section-padding" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Student Success</div>
+      <h2 class="section-title">Our Results Speak</h2>
+      <p class="section-subtitle">Hear from students and parents who have experienced the difference</p>
+    </div>
+
+    <div class="results-banner">
+      <div class="result-item" *ngFor="let result of results">
+        <div class="result-score">{{ result.score }}</div>
+        <div class="result-info">
+          <strong>{{ result.name }}</strong>
+          <span>{{ result.detail }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card" *ngFor="let t of testimonials">
+        <div class="testimonial-stars">
+          <i class="fas fa-star" *ngFor="let s of [1,2,3,4,5]"></i>
+        </div>
+        <p class="testimonial-text">"{{ t.text }}"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" [style.background]="t.color">
+            {{ t.initials }}
+          </div>
+          <div>
+            <strong>{{ t.name }}</strong>
+            <span>{{ t.role }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GOOGLE REVIEWS SECTION ===== -->
+<section class="google-reviews-section section-padding" id="ratings">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Google Reviews</div>
+      <h2 class="section-title">What People Say on Google</h2>
+      <p class="section-subtitle">Real reviews from parents and students on Google</p>
+    </div>
+
+    <div class="google-reviews-summary">
+      <div class="google-rating-card">
+        <div class="google-logo-row">
+          <svg class="google-logo" viewBox="0 0 24 24" width="32" height="32">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span class="google-label">Google Reviews</span>
+        </div>
+        <div class="google-rating-big">
+          <span class="rating-number">{{ googleOverallRating }}</span>
+          <div class="rating-details">
+            <div class="google-stars-row">
+              <i class="fas fa-star" *ngFor="let s of [1,2,3,4]"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <span class="review-count">Based on {{ googleTotalReviews }}+ reviews</span>
+          </div>
+        </div>
+        <a [href]="googleReviewUrl" target="_blank" class="btn btn-google-review">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Write a Review
+        </a>
+      </div>
+    </div>
+
+    <div class="google-reviews-grid">
+      <div class="google-review-card" *ngFor="let review of googleReviews">
+        <div class="review-header">
+          <div class="review-avatar" [style.background]="review.color">
+            {{ review.initials }}
+          </div>
+          <div class="review-meta">
+            <strong>{{ review.name }}</strong>
+            <span class="review-time">{{ review.timeAgo }}</span>
+          </div>
+          <svg class="review-google-icon" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star" *ngFor="let s of [].constructor(review.rating)"></i>
+          <i class="far fa-star" *ngFor="let s of [].constructor(5 - review.rating)"></i>
+        </div>
+        <p class="review-text">"{{ review.text }}"</p>
+      </div>
+    </div>
+
+    <div class="google-reviews-footer">
+      <a [href]="googleReviewUrl" target="_blank" class="btn btn-outline-google">
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        See All Reviews on Google
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-content">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>Join thousands of students who have transformed their academic performance with our expert guidance.</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-accent btn-lg">
+            <i class="fas fa-rocket"></i> Enroll Today
+          </a>
+          <a href="tel:+918218343930" class="btn btn-outline-white btn-lg">
+            <i class="fas fa-phone"></i> Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq-section section-padding" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Have Questions?</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Find answers to the most common questions from parents and students</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item" *ngFor="let faq of faqs; let i = index" [class.active]="faq.open">
+        <button class="faq-question" (click)="toggleFaq(i)">
+          <span>{{ faq.question }}</span>
+          <i class="fas" [class.fa-plus]="!faq.open" [class.fa-minus]="faq.open"></i>
+        </button>
+        <div class="faq-answer" *ngIf="faq.open">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact-section section-padding" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-subtitle">Have questions? Reach out to us and we'll get back to you soon</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-phone-alt"></i></div>
+          <h4>Call Us</h4>
+          <p>+91 82183 43930</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div>
+          <h4>WhatsApp</h4>
+          <p>+91 82183 43930</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+          <h4>Email</h4>
+          <p>yourmathematicst&#64;gmail.com</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h4>Location</h4>
+          <p>Lane No. 11, near Chak Road, Gandhi Colony, Muzaffarnagar, UP 251002</p>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <form class="contact-form" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Student Name <span class="required">*</span></label>
+              <input type="text" placeholder="Enter student name" [(ngModel)]="contactForm.name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label>Class <span class="required">*</span></label>
+              <select [(ngModel)]="contactForm.studentClass" name="studentClass" required>
+                <option value="">Select Class</option>
+                <option value="9">Class 9th</option>
+                <option value="10">Class 10th</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number <span class="required">*</span></label>
+              <input type="tel" placeholder="Enter phone number" [(ngModel)]="contactForm.phone" name="phone" required>
+            </div>
+            <div class="form-group">
+              <label>School Name</label>
+              <input type="text" placeholder="Enter school name" [(ngModel)]="contactForm.school" name="school">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Enter email" [(ngModel)]="contactForm.email" name="email">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="4" placeholder="Your message..." [(ngModel)]="contactForm.message" name="message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-full" [disabled]="formStatus === 'sending'">
+            <ng-container *ngIf="formStatus === 'idle' || formStatus === 'error'">
+              <i class="fab fa-whatsapp"></i> Send via WhatsApp
+            </ng-container>
+            <ng-container *ngIf="formStatus === 'sending'">
+              <i class="fas fa-spinner fa-spin"></i> Sending...
+            </ng-container>
+            <ng-container *ngIf="formStatus === 'success'">
+              <i class="fas fa-check-circle"></i> Sent Successfully!
+            </ng-container>
+          </button>
+          <div class="form-status success" *ngIf="formStatus === 'success'">
+            <i class="fas fa-check-circle"></i> Your enquiry has been sent! We'll contact you soon.
+          </div>
+          <div class="form-status error" *ngIf="formStatus === 'error'">
+            <i class="fas fa-exclamation-circle"></i> Please fill in Name, Class, and Phone Number.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo">
+          <img src="assets/maths_adda_logo.jpg" alt="Maths Adda" class="logo-img">
+          <span class="logo-name">Maths<span class="logo-name-accent">Adda</span></span>
+        </a>
+        <p>Empowering students of Class 9th & 10th with quality education, expert guidance, and a passion for learning.</p>
+        <div class="footer-socials">
+          <a href="https://www.youtube.com/@MathswithGurpreetSir" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/maths.adda_" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/MathsAdda" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+      <div class="footer-links-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#subjects">Courses</a></li>
+          <li><a href="#youtube">YouTube</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4>Subjects</h4>
+        <ul>
+          <li><a href="#subjects">Mathematics</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Study Material</a></li>
+          <li><a href="#">Sample Papers</a></li>
+          <li><a href="#">NCERT Solutions</a></li>
+          <li><a href="#">Previous Year Papers</a></li>
+          <li><a href="#">Free YouTube Videos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Maths Adda. All rights reserved.</p>
+      <p>Made with <i class="fas fa-heart" style="color: var(--accent);"></i> for Education</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" [class.visible]="isScrolled" (click)="scrollToTop()">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918218343930" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="whatsapp-tooltip">Chat with us</span>
+</a>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" fill="none">
+  <defs>
+    <linearGradient id="abg" x1="0" y1="0" x2="400" y2="500"><stop stop-color="#e0f2fe"/><stop offset="1" stop-color="#ccfbf1"/></linearGradient>
+  </defs>
+  <rect width="400" height="500" rx="20" fill="url(#abg)"/>
+  <circle cx="200" cy="200" r="70" fill="rgba(13,148,136,.15)"/>
+  <path d="M200 280c-70 0-120 35-120 80v30h240v-30c0-45-50-80-120-80z" fill="rgba(13,148,136,.1)"/>
+  <text x="200" y="440" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" fill="#64748b">Replace with teacher photo</text>
+</svg>

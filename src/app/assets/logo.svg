@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="48" height="48" x="6" y="6" rx="12" fill="url(#g1)"/>
+  <path d="M18 34l12-14 12 14" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="30" cy="22" r="4" fill="#fff"/>
+  <text x="66" y="40" font-family="Poppins,sans-serif" font-weight="700" font-size="28" fill="#1e293b">Guru<tspan fill="#f97316">Ji</tspan></text>
+  <defs><linearGradient id="g1" x1="6" y1="6" x2="54" y2="54"><stop stop-color="#0d9488"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+</svg>
