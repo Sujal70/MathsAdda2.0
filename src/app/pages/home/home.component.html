@@ -266,36 +266,48 @@
     <div class="section-header">
       <div class="section-tag">Student Success</div>
       <h2 class="section-title">Our Results Speak</h2>
-      <p class="section-subtitle">Hear from students and parents who have experienced the difference</p>
+      <p class="section-subtitle">Board Results 2025 that make us proud</p>
     </div>
 
-    <div class="results-banner">
-      <div class="result-item" *ngFor="let result of results">
-        <div class="result-score">{{ result.score }}</div>
-        <div class="result-info">
-          <strong>{{ result.name }}</strong>
-          <span>{{ result.detail }}</span>
+    <div class="results-showcase">
+      <div class="results-image-side">
+        <img src="assets/result-2025.jpg" alt="Class 10 Maths Board Result 2025 - 4 Students Scored Perfect 100/100" class="results-img">
+      </div>
+      <div class="results-highlights">
+        <h3 class="results-headline">Class 10 Maths Board Result <span>2025</span></h3>
+        <div class="highlight-cards">
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
+            <div>
+              <div class="highlight-number">4</div>
+              <div class="highlight-label">Students Scored<br><strong>Perfect 100/100</strong></div>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-medal"></i></div>
+            <div>
+              <div class="highlight-number">18+</div>
+              <div class="highlight-label">Students Scored<br><strong>Above 90/100</strong></div>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+            <div>
+              <div class="highlight-number">10+</div>
+              <div class="highlight-label">Years of<br><strong>Proven Results</strong></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="testimonials-grid">
-      <div class="testimonial-card" *ngFor="let t of testimonials">
-        <div class="testimonial-stars">
-          <i class="fas fa-star" *ngFor="let s of [1,2,3,4,5]"></i>
-        </div>
-        <p class="testimonial-text">"{{ t.text }}"</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" [style.background]="t.color">
-            {{ t.initials }}
-          </div>
-          <div>
-            <strong>{{ t.name }}</strong>
-            <span>{{ t.role }}</span>
-          </div>
-        </div>
+    <div class="batch-photo-section">
+      <div class="batch-photo-wrapper">
+        <img src="assets/batch-students.jpg" alt="Maths Adda Batch 2025 - Celebrating Success Together" class="batch-photo-img">
       </div>
+      <p class="batch-caption">Our Batch 2025 — Celebrating Success Together</p>
     </div>
+
   </div>
 </section>
 
