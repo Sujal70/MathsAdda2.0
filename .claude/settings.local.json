@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(dotnet build *)",
+      "Bash(dotnet restore *)",
+      "Bash(dotnet run *)",
+      "Bash(curl -s http://localhost:5000/swagger/index.html)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Initial commit - Maths Adda Backend API *)",
+      "Bash(git push *)"
+    ]
+  }
+}
