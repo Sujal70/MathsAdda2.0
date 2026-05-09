@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit, OnDestroy, HostListener, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +13,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  private readonly auth = inject(AuthService);
+  private readonly tokenService = inject(TokenService);
+  private readonly router = inject(Router);
+
   isScrolled = false;
   mobileMenuOpen = false;
   activeTab = '9';
+  isLoggingOut = false;
   typewriterText = '';
   private typewriterInterval: any;
   private phrases = [
@@ -297,5 +304,32 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.formStatus = 'success';
     this.contactForm = { name: '', studentClass: '', phone: '', school: '', email: '', message: '' };
     setTimeout(() => this.formStatus = 'idle', 5000);
+  }
+
+  get isLoggedIn(): boolean {
+    return this.tokenService.isLoggedIn();
+  }
+
+  get userFirstName(): string {
+    const fullName = this.tokenService.getUser()?.name ?? '';
+    return fullName.split(' ')[0] ?? '';
+  }
+
+  onLogout(): void {
+    if (this.isLoggingOut) return;
+    this.isLoggingOut = true;
+
+    this.auth.logout().subscribe({
+      next: () => {
+        this.isLoggingOut = false;
+        this.router.navigate(['/login']);
+      },
+      error: () => {
+        // Backend unreachable or token already expired — still clear local session.
+        this.tokenService.clear();
+        this.isLoggingOut = false;
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

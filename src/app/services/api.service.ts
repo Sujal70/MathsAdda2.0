@@ -1,28 +1,16 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-// Update this to your Render URL
-const API_BASE_URL = 'https://maths-adda-backend.onrender.com/api';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = API_BASE_URL;
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) {}
-
-  // Auth APIs
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/auth/login`, { email, password });
-  }
-
-  register(data: { name: string; email: string; password: string; phone: string }): Observable<any> {
-    return this.http.post(`${this.baseUrl}/auth/register`, data);
-  }
-
-  // Course APIs
+  // Course APIs (Phase 2)
   getCourses(): Observable<any> {
     return this.http.get(`${this.baseUrl}/courses`);
   }
@@ -31,7 +19,7 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/courses/class/${classLevel}`);
   }
 
-  // Student APIs
+  // Student APIs (Phase 2)
   getStudentProfile(): Observable<any> {
     return this.http.get(`${this.baseUrl}/students/profile`);
   }

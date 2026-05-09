@@ -32,6 +32,17 @@
 
     <div class="nav-actions">
       <a href="#contact" class="btn btn-primary btn-sm">Enroll Now</a>
+      @if (isLoggedIn) {
+        <span class="user-greeting">Hi, {{ userFirstName }}</span>
+        <button type="button" class="btn btn-logout btn-sm" (click)="onLogout()" [disabled]="isLoggingOut">
+          <i class="fas fa-sign-out-alt"></i>
+          {{ isLoggingOut ? 'Logging out...' : 'Logout' }}
+        </button>
+      } @else {
+        <a routerLink="/login" class="btn btn-outline-light btn-sm">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+      }
       <button class="mobile-toggle" (click)="toggleMobileMenu()">
         <i [class]="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
       </button>
